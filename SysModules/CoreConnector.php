@@ -20,21 +20,15 @@ class CoreConnector
 	/**
 	 * Function that send the request to the Core system and send the response to the calleer
 	 */
-	public function SendRequest()
+	public function SendRequest($request)
 	{
-		//Test remove later
-		$data = array("name" => "Hagrid", "age" => "36");
-		$data_string = json_encode($data);
-		// -----------------------------
-		
-		
 		$ch = curl_init($this->_coreURL);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 				'Content-Type: application/json',
-				'Content-Length: ' . strlen($data_string))
+				'Content-Length: ' . strlen($request))
 			);
 		
 		$result = curl_exec($ch);

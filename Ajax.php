@@ -7,8 +7,13 @@ require_once 'Autoloader.php';
  * Check here if the connection is from the same server, if not don't response
  *
 */
+//Test remove later
+$data = array("name" => "Hagrid", "age" => "36");
+$data_string = json_encode($data);
+// -----------------------------
+
 
 $ctrl = MainController::getInstance();
-$ctrl->coreConnector->SendRequest();
+$ctrl->coreConnector->SendRequest($data_string);
 
 ?>

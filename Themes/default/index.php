@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -19,15 +20,21 @@
 	$ctrl->files->includeLanguajes();
 	
 	?>
-	<script>
-		var lat = $.ajax({
-				url: "Ajax.php?function=curl",
-				async: false
-			}).responseText;
-	</script>
-	<script> alert (lat); </script>
+		
 </head>
 <body>
-
-</body>
+	<div style="height:100px; width:100px" class="test">
+    	Test Div...............
+ 	</div>
+ 	
+ 	<script>
+		$.ajax({
+			url: "Ajax.php?function=curl",
+			  context: document.body
+			}).done(function(data) { 
+				$('div.test').html(data);
+			});
+	</script>
+	
+</body>	
 </html>
